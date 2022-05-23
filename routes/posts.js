@@ -3,11 +3,11 @@ var router = express.Router();
 
 const PostControllers = require("../controllers/post");
 
-router.get("/", PostControllers.getPosts);
-router.post("/", PostControllers.createPosts);
-router.delete("/", PostControllers.deleteAllPosts);
-router.delete("/:id", PostControllers.deletePost);
-router.patch("/:id", PostControllers.editPost);
-router.options("/", PostControllers.cors);
+router.get("/posts", PostControllers.getPosts);
+router.post("/posts", PostControllers.createPosts);
+router.delete("/posts", PostControllers.deleteAllPosts);
+router.delete("/post/:id", PostControllers.deletePost);
+router.patch("/post/:id", PostControllers.editPost);
+router.options("/posts", PostControllers.cors);
 
 module.exports = router;

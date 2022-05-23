@@ -37,22 +37,36 @@ const postControllers = {
     }
   },
   async deleteAllPosts(req, res) {
-    await Post.deleteMany({});
-    await handleSuccess(res);
+    try {
+      await Post.deleteMany({});
+      await handleSuccess(res);
+    } catch {
+      handleError(res);
+    }
   },
   async deletePost(req, res) {
-    const id = req.params.id;
-    await Post.findByIdAndDelete(id);
-    await handleSuccess(res, "成功刪除一筆");
+    try {
+      // console.log(req.originalUrl);
+      const id = req.params.id;
+      let deletePost = await Post.findByIdAndDelete(id);
+      if (deletePost != null) {
+        await handleSuccess(res, "成功刪除一筆");
+      } else {
+        handleError(res);
+      }
+    } catch (err) {
+      handleError(res);
+    }
   },
   async editPost(req, res) {
     try {
       const id = req.params.id;
+      console.log({ id });
       const data = req.body;
       console.log({ data });
-      if (data.name && data.content) {
+      if (data.user && data.content) {
         let editedPost = await Post.findByIdAndUpdate(id, {
-          name: data.name,
+          user: data.user,
           content: data.content,
           image: data.image || "",
           tags: data.tags || [],
