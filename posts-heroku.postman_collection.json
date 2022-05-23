@@ -2,11 +2,29 @@
 	"info": {
 		"_postman_id": "dfa37bd0-668d-4233-baef-b4f7ed08c84d",
 		"name": "posts-heroku",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12394128"
 	},
 	"item": [
 		{
 			"name": "取得posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/posts",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得posts with sort",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -29,7 +47,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"拿鐵\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\"]\n}",
+					"raw": "{\n  \"name\": \"reckie\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵2\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\"]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -63,13 +81,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/posts/627f5d9acc51eacb318ead73",
+					"raw": "{{baseURL}}/post/62851baba320f565558c18c7",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
-						"posts",
-						"627f5d9acc51eacb318ead73"
+						"post",
+						"62851baba320f565558c18c7"
 					]
 				}
 			},
@@ -90,13 +108,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/posts/627f5d31cc51eacb318ead67",
+					"raw": "{{baseURL}}/post/62851baba320f565558c18c7",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
-						"posts",
-						"627f5d31cc51eacb318ead67"
+						"post",
+						"62851baba320f565558c18c7"
 					]
 				}
 			},
@@ -152,7 +170,7 @@
 	"variable": [
 		{
 			"key": "baseURL",
-			"value": "https://mysterious-oasis-68879.herokuapp.com"
+			"value": "https://serene-fjord-39041.herokuapp.com"
 		}
 	]
 }
