@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "dfa37bd0-668d-4233-baef-b4f7ed08c84d",
+		"name": "posts-heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "取得posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/posts",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"拿鐵\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/posts",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "編輯post",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"拿鐵\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵，一天精神糧食\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\", \"ya\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/posts/627f5d9acc51eacb318ead73",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"posts",
+						"627f5d9acc51eacb318ead73"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/posts/627f5d31cc51eacb318ead67",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"posts",
+						"627f5d31cc51eacb318ead67"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除posts",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/posts",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://mysterious-oasis-68879.herokuapp.com"
+		}
+	]
+}
