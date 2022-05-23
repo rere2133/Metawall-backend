@@ -29,12 +29,22 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/posts",
+					"raw": "{{baseURL}}/posts?timeSort=asc&search=果汁",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"posts"
+					],
+					"query": [
+						{
+							"key": "timeSort",
+							"value": "asc"
+						},
+						{
+							"key": "search",
+							"value": "果汁"
+						}
 					]
 				}
 			},
@@ -47,7 +57,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"reckie\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵2\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\"]\n}",
+					"raw": "{\n  \"user\": \"628247384879e6f040093c26\",\n  \"content\": \"不喜歡美式，只愛果汁\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\"]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -73,7 +83,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"拿鐵\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵，一天精神糧食\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\", \"ya\"]\n}",
+					"raw": "{\n  \"user\": \"628247384879e6f040093c26\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵，一天精神來源\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\", \"ya\"]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -81,13 +91,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/post/62851baba320f565558c18c7",
+					"raw": "{{baseURL}}/post/628b4b942b0a5ac15fd208c3",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"post",
-						"62851baba320f565558c18c7"
+						"628b4b942b0a5ac15fd208c3"
 					]
 				}
 			},
@@ -108,13 +118,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/post/62851baba320f565558c18c7",
+					"raw": "{{baseURL}}/post/628b4b942b0a5ac15fd208c3",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"post",
-						"62851baba320f565558c18c7"
+						"628b4b942b0a5ac15fd208c3"
 					]
 				}
 			},
