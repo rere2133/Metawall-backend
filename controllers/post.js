@@ -37,7 +37,8 @@ const postControllers = {
         handleError(res);
       }
     } catch (err) {
-      handleError(res, 400, err.message);
+      // handleError(res, 400, err.message);
+      next(err);
     }
   },
   async deleteAllPosts(req, res) {
