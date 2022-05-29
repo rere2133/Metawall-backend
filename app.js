@@ -19,13 +19,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/users", usersRouter);
 app.use(postsRouter);
-app.use((err, req, res, next) => {
-  handleError(res, 400, err.message);
-});
+
 app.use((req, res, next) => {
-  handleError(res, 404, "page not found.");
+  res.status(404).json({
+    status: "error",
+    message: "找不到此頁面",
+  });
+});
+app.use((err, req, res, next) => {
+  res.status(500).json({
+    status: "error",
+    message: err.message,
+  });
 });
 
 module.exports = app;
