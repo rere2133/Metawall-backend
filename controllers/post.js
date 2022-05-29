@@ -1,5 +1,6 @@
 const handleSuccess = require("../services/handleSuccess");
 const handleError = require("../services/handleError");
+const appError = require("../services/appError");
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
 const postControllers = {
@@ -17,10 +18,13 @@ const postControllers = {
       .sort(timeSort);
     await handleSuccess(res, null, posts);
   },
-  async createPosts(req, res) {
+  async createPosts(req, res, next) {
     try {
       const data = req.body;
       console.log({ data });
+      if (data.content == undefined) {
+        appError(400, "貼文內容為必填", next);
+      }
       if (data.user && data.content) {
         await Post.create({
           user: data.user,

@@ -18,7 +18,6 @@ process.on("uncaughtException", (err) => {
   console.log(err);
   process.exit(1);
 });
-
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
@@ -35,7 +34,8 @@ app.use((req, res, next) => {
   });
 });
 app.use((err, req, res, next) => {
-  res.status(500).json({
+  err.statusCode = err.statusCode || 500;
+  res.status(err.statusCode).json({
     status: "error",
     message: err.message,
   });
