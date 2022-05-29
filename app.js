@@ -12,6 +12,13 @@ var app = express();
 require("./connections");
 const handleError = require("./services/handleError");
 
+//程式出現重大錯誤時
+process.on("uncaughtException", (err) => {
+  console.log("Uncaught Exception");
+  console.log(err);
+  process.exit(1);
+});
+
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
@@ -32,6 +39,10 @@ app.use((err, req, res, next) => {
     status: "error",
     message: err.message,
   });
+});
+//未捕捉到的catch
+process.on("unhandledRejection", (err, promise) => {
+  console.error("未捕捉到的rejection:", promise, "原因：", err);
 });
 
 module.exports = app;
