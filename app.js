@@ -12,6 +12,12 @@ var app = express();
 require("./connections");
 const handleError = require("./services/handleError");
 
+process.on("uncaughtException", (err) => {
+  console.log("Uncaught Exception");
+  console.log(err);
+  process.exit(1);
+});
+
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
@@ -21,12 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // app.use("/users", usersRouter);
 app.use(postsRouter);
-// app.use((err, req, res, next) => {
-//   handleError(res, 400, err.message);
-// });
-// app.use((req, res, next) => {
-//   handleError(res, 404, "page not found.");
-// });
+
 app.use((req, res, next) => {
   res.status(404).json({
     status: "error",
@@ -38,5 +39,9 @@ app.use((err, req, res, next) => {
     status: "error",
     message: "發生錯誤，請稍後再試。",
   });
+});
+process.on("unhandledRejection", (err, promise) => {
+  console.log("未捕捉到的Rejection:", promise);
+  console.log("原因:" + err);
 });
 module.exports = app;
