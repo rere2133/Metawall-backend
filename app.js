@@ -35,9 +35,10 @@ app.use((req, res, next) => {
   });
 });
 app.use((err, req, res, next) => {
-  res.status(500).json({
+  err.statusCode = err.statusCode || 500;
+  res.status(err.statusCode).json({
     status: "error",
-    message: "發生錯誤，請稍後再試。",
+    message: err.message,
   });
 });
 process.on("unhandledRejection", (err, promise) => {

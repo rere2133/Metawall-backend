@@ -1,5 +1,6 @@
 const handleSuccess = require("../services/handleSuccess");
 const handleError = require("../services/handleError");
+const appError = require("../services/appError");
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
 const postControllers = {
@@ -30,7 +31,7 @@ const postControllers = {
         });
         await handleSuccess(res, "新增成功");
       } else {
-        handleError(res);
+        appError(400, "欄位填寫錯誤或無此ID", next);
       }
     } catch (err) {
       // handleError(res, 400, err.message);
@@ -53,7 +54,7 @@ const postControllers = {
       if (deletePost != null) {
         await handleSuccess(res, "成功刪除一筆");
       } else {
-        handleError(res);
+        appError(400, "無此貼文ID", next);
       }
     } catch (err) {
       handleError(res);
@@ -75,10 +76,10 @@ const postControllers = {
         if (editedPost !== null) {
           await handleSuccess(res, "成功更新一筆");
         } else {
-          handleError(res);
+          appError(400, "無此貼文ID", next);
         }
       } else {
-        handleError(res);
+        appError(400, "貼文內容填寫錯誤", next);
       }
     } catch (err) {
       handleError(res, 400, err.message);
