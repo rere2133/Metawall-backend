@@ -19,26 +19,21 @@ const postControllers = {
     await handleSuccess(res, null, posts);
   },
   async createPosts(req, res, next) {
-    try {
-      const data = req.body;
-      console.log({ data });
-      if (data.content == undefined) {
-        appError(400, "貼文內容為必填", next);
-      }
-      if (data.user && data.content) {
-        await Post.create({
-          user: data.user,
-          content: data.content,
-          image: data.image || "",
-          tags: data.tags || [],
-        });
-        await handleSuccess(res, "新增成功");
-      } else {
-        handleError(res);
-      }
-    } catch (err) {
-      // handleError(res, 400, err.message);
-      next(err);
+    const data = req.body;
+    console.log({ data });
+    if (data.content == undefined) {
+      appError(400, "貼文內容為必填", next);
+    }
+    if (data.user && data.content) {
+      await Post.create({
+        user: data.user,
+        content: data.content,
+        image: data.image || "",
+        tags: data.tags || [],
+      });
+      await handleSuccess(res, "新增成功");
+    } else {
+      handleError(res);
     }
   },
   async deleteAllPosts(req, res) {
