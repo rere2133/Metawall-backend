@@ -17,7 +17,7 @@ const postControllers = {
       .sort(timeSort);
     await handleSuccess(res, null, posts);
   },
-  async createPosts(req, res) {
+  async createPosts(req, res, next) {
     try {
       const data = req.body;
       console.log({ data });
@@ -33,7 +33,8 @@ const postControllers = {
         handleError(res);
       }
     } catch (err) {
-      handleError(res, 400, err.message);
+      // handleError(res, 400, err.message);
+      next(err);
     }
   },
   async deleteAllPosts(req, res) {

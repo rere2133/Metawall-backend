@@ -21,11 +21,22 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // app.use("/users", usersRouter);
 app.use(postsRouter);
-app.use((err, req, res, next) => {
-  handleError(res, 400, err.message);
-});
+// app.use((err, req, res, next) => {
+//   handleError(res, 400, err.message);
+// });
+// app.use((req, res, next) => {
+//   handleError(res, 404, "page not found.");
+// });
 app.use((req, res, next) => {
-  handleError(res, 404, "page not found.");
+  res.status(404).json({
+    status: "error",
+    message: "找不到頁面！",
+  });
 });
-
+app.use((err, req, res, next) => {
+  res.status(500).json({
+    status: "error",
+    message: "發生錯誤，請稍後再試。",
+  });
+});
 module.exports = app;
