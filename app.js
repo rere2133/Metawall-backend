@@ -51,6 +51,7 @@ const resProdError = (err, res) => {
   } else {
     res.status(500).json({
       message: "發生錯誤，請稍後再試",
+      name: err.name,
     });
   }
 };
