@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema(
     },
     sex: {
       type: "String",
-      enum: ["female", "male"],
+      enum: ["female", "male", ""],
+      default: "",
       //字串須符合enum內的value
     },
     password: {
@@ -31,6 +32,7 @@ const userSchema = new mongoose.Schema(
     createAt: {
       type: Date,
       default: Date.now,
+      // select: false,
     },
   },
   {
