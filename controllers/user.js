@@ -51,6 +51,12 @@ const userControllers = {
     }
     generateJWT(user, 200, res);
   },
+  async getProfile(req, res, next) {
+    res.status(200).json({
+      status: "success",
+      user: req.user,
+    });
+  },
 };
 
 module.exports = userControllers;
