@@ -19,6 +19,10 @@ const userControllers = {
     if (!validator.isEmail(email)) {
       return appError(400, "信箱格式錯誤", next);
     }
+    const isExit = await User.findOne({ email });
+    if (isExit) {
+      return appError(400, "此信箱已被註冊", next);
+    }
     password = await bcrypt.hash(password, 12);
     const newUser = await User.create({
       name,
