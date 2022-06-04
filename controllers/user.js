@@ -1,21 +1,8 @@
 const validator = require("validator");
-const jwt = require("jsonwebtoken");
 const appError = require("../services/appError");
 const User = require("../models/userModel");
-const bcrypt = require("bcryptjs/dist/bcrypt");
-const bcryptjs = require("bcryptjs");
-
-const generateJWT = (user, statusCode, res) => {
-  //產生 JWT token
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_DAY,
-  });
-  user.password = null;
-  res.status(statusCode).json({
-    name: user.name,
-    token,
-  });
-};
+const bcrypt = require("bcryptjs");
+const { generateJWT } = require("../services/auth");
 
 const userControllers = {
   async signUp(req, res, next) {
@@ -46,13 +33,40 @@ const userControllers = {
       return appError(400, "帳號密碼不得為空", next);
     }
     const user = await User.findOne({ email }).select("+password");
-    const auth = await bcryptjs.compare(password, user.password);
+    const auth = await bcrypt.compare(password, user.password);
     console.log(auth);
     if (!user || !auth) {
       return appError(400, "帳號或密碼有誤", next);
     }
-
     generateJWT(user, 200, res);
+  },
+  async getProfile(req, res, next) {
+    res.status(200).json({
+      status: "success",
+      user: req.user,
+    });
+  },
+  async editPassword(req, res, next) {
+    const { password, confirmPassword } = req.body;
+    if (!password || !confirmPassword) {
+      return appError(400, "欄位填寫錯誤", next);
+    }
+    if (password !== confirmPassword) {
+      return appError(400, "密碼不一致", next);
+    }
+    if (!validator.isLength(password, { min: 8 })) {
+      return appError(400, "密碼須大於8碼", next);
+    }
+    newPassword = await bcrypt.hash(password, 12);
+    const user = await User.findByIdAndUpdate(req.user.id, {
+      password: newPassword,
+    });
+    console.log(user);
+    generateJWT(user, 200, res);
+    // res.status(200).json({
+    //   status: "patch",
+    //   user: req.user,
+    // });
   },
 };
 module.exports = userControllers;
