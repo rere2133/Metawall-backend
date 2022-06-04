@@ -2,18 +2,7 @@ const appError = require("../services/appError");
 const User = require("../models/userModel");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-
-const generateJWT = (user, statusCode, res) => {
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_DAY,
-  });
-  user.password = undefined;
-  res.status(statusCode).json({
-    user: user.name,
-    token,
-  });
-};
+const { generateJWT } = require("../services/auth");
 
 const userControllers = {
   async signUp(req, res, next) {
