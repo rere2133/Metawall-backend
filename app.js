@@ -4,7 +4,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
-// var usersRouter = require("./routes/users");
+var usersRouter = require("./routes/users");
 var postsRouter = require("./routes/posts");
 
 var app = express();
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/users", usersRouter);
+app.use("/users", usersRouter);
 app.use(postsRouter);
 
 app.use((req, res, next) => {
