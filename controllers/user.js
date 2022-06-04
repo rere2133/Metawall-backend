@@ -39,6 +39,18 @@ const userControllers = {
 
     generateJWT(newUser, 201, res);
   },
+  async signIn(req, res, next) {
+    let { email, password } = req.body;
+    if (!email || !password) {
+      return appError(400, "帳號或密碼不可為空", next);
+    }
+    const user = await User.findOne({ email }).select("+password");
+    const auth = await bcrypt.compare(password, user.password);
+    if (!auth) {
+      return appError(400, "帳號或密碼錯誤");
+    }
+    generateJWT(user, 200, res);
+  },
 };
 
 module.exports = userControllers;
