@@ -33,8 +33,13 @@ const isAuth = handleErrorAsync(async (req, res, next) => {
   next();
 });
 
+router.get("/profile", isAuth, handleErrorAsync(userControllers.getProfile));
 router.post("/sign_up", handleErrorAsync(userControllers.signUp));
 router.post("/sign_in", handleErrorAsync(userControllers.signIn));
-router.get("/profile", isAuth, handleErrorAsync(userControllers.getProfile));
+router.post(
+  "/updatePassword",
+  isAuth,
+  handleErrorAsync(userControllers.editPassword)
+);
 
 module.exports = router;

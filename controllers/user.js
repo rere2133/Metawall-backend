@@ -57,6 +57,24 @@ const userControllers = {
       user: req.user,
     });
   },
+  async editPassword(req, res, next) {
+    let { password, confirmPassword } = req.body;
+    if (!password || !confirmPassword) {
+      return appError(400, "新密碼與確認密碼不可為空", next);
+    }
+    if (password !== confirmPassword) {
+      return appError(400, "密碼不一致", next);
+    }
+    if (!validator.isLength(password, { min: 8 })) {
+      return appError(400, "密碼最少需要8個英文字母", next);
+    }
+    newPassword = await bcrypt.hash(password, 12);
+    const user = await User.findByIdAndUpdate(req.user.id, {
+      password: newPassword,
+    });
+
+    generateJWT(user, 200, res);
+  },
 };
 
 module.exports = userControllers;
