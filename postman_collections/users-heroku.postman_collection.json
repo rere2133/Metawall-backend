@@ -128,6 +128,39 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "更新使用者資訊",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2ZmQxNmQxYjNkZGVlMjg4ODk1ZiIsImlhdCI6MTY1NDQxOTQyMSwiZXhwIjoxNjU1MDI0MjIxfQ.SzpQmac0CIK0ha32kRxnOYxdAAZqWlcvAY4NbIdP7LE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Betty\",\n    \"sex\": \"female\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/users/profile",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
