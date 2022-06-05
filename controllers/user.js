@@ -54,6 +54,29 @@ const userControllers = {
       user: req.user,
     });
   },
+  async editProfile(req, res, next) {
+    let { name, sex, photo } = req.body;
+    const userId = req.user._id;
+    if (!name) {
+      return appError(400, "暱稱不可為空", next);
+    }
+    if (!["female", "male", ""].includes(sex)) {
+      return appError(400, "性別設定錯誤", next);
+    }
+    let updateUser = await User.findByIdAndUpdate(userId, {
+      name,
+      sex,
+      photo,
+    });
+    if (updateUser !== null) {
+      res.status(200).json({
+        status: "success",
+        msg: "個人資料修改成功",
+      });
+    } else {
+      appError(400, "無此使用者Id", next);
+    }
+  },
   async editPassword(req, res, next) {
     let { password, confirmPassword } = req.body;
     if (!password || !confirmPassword) {
