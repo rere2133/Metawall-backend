@@ -10,7 +10,6 @@ var postsRouter = require("./routes/posts");
 var app = express();
 
 require("./connections");
-const handleError = require("./services/handleError");
 const res = require("express/lib/response");
 
 process.on("uncaughtException", (err) => {

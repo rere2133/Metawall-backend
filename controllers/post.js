@@ -1,5 +1,4 @@
 const handleSuccess = require("../services/handleSuccess");
-const handleError = require("../services/handleError");
 const appError = require("../services/appError");
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
@@ -20,7 +19,7 @@ const postControllers = {
   },
   async createPosts(req, res, next) {
     const data = req.body;
-    console.log({ data });
+    // console.log({ data });
     if (data.user && data.content) {
       await Post.create({
         user: data.user,
@@ -48,9 +47,9 @@ const postControllers = {
   },
   async editPost(req, res, next) {
     const id = req.params.id;
-    console.log({ id });
+    // console.log({ id });
     const data = req.body;
-    console.log({ data });
+    // console.log({ data });
     if (data.user && data.content) {
       let editedPost = await Post.findByIdAndUpdate(id, {
         user: data.user,
