@@ -38,9 +38,13 @@ const userControllers = {
       return appError(400, "帳號或密碼不可為空", next);
     }
     const user = await User.findOne({ email }).select("+password");
+    if (!user) {
+      return appError(400, "帳號或密碼錯誤", next);
+    }
+
     const auth = await bcrypt.compare(password, user.password);
     if (!auth) {
-      return appError(400, "帳號或密碼錯誤");
+      return appError(400, "帳號或密碼錯誤", next);
     }
     generateJWT(user, 200, res);
   },
