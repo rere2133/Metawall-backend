@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Ammn\",\n    \"email\": \"a4@gmail.com\",\n    \"password\": \"yuiohjkl\",\n    \"confirmPassword\":\"yuiohjkl\"\n}",
+					"raw": "{\n    \"name\": \"Ammn\",\n    \"email\": \"a6@gmail.com\",\n    \"password\": \"yuiohjkl\",\n    \"confirmPassword\":\"yuiohjkl\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,7 +70,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODEzOSwiZXhwIjoxNjU1MDIyOTM5fQ.16uY8QGQgdNRRjW6hWLWfIxY35qAQ8_mxI1HZM04qHM",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODgxNywiZXhwIjoxNjU1MDIzNjE3fQ.flrdy5S3LMDVrBKqWwDpVeihHs06LbzjcluTKId17Ow",
 						"type": "text"
 					}
 				],
@@ -136,13 +136,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2ZmQxNmQxYjNkZGVlMjg4ODk1ZiIsImlhdCI6MTY1NDQxOTQyMSwiZXhwIjoxNjU1MDI0MjIxfQ.SzpQmac0CIK0ha32kRxnOYxdAAZqWlcvAY4NbIdP7LE",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODgxNywiZXhwIjoxNjU1MDIzNjE3fQ.flrdy5S3LMDVrBKqWwDpVeihHs06LbzjcluTKId17Ow",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Betty\",\n    \"sex\": \"female\"\n}",
+					"raw": "{\n    \"name\": \"Betty\",\n    \"sex\": \"male\",\n    \"photo\": \"picture.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

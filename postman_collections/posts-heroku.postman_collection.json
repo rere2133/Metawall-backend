@@ -26,7 +26,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"小明\",\n    \"email\": \"abc123@gmail.com\",\n    \"password\": \"uiojkl\",\n    \"confirmPassword\":\"uiojkl\"\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,7 +99,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"user\": \"629c5fea6068b8a5afed3a23\",\n  \"content\": \"不喜歡美式，只愛果汁\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\"]\n}",
+					"raw": "{\n  \"user\": \"629c6a0d855efff74e42d4ae\",\n  \"content\": \"不喜歡美式，只愛果汁\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\"]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -135,7 +135,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"user\": \"628247384879e6f040093c26\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵，一天精神來源\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\", \"ya\"]\n}",
+					"raw": "{\n  \"user\": \"629c6a0d855efff74e42d4ae\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵，一天精神來源\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\", \"ya\"]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,13 +143,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/post/629c6459855efff74e42d481",
+					"raw": "{{baseURL}}/post/629f671d42be8330d26dd241",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"post",
-						"629c6459855efff74e42d481"
+						"629f671d42be8330d26dd241"
 					]
 				}
 			},
@@ -180,13 +180,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/post/629c6459855efff74e42d481",
+					"raw": "{{baseURL}}/post/629f671d42be8330d26dd241",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"post",
-						"629c6459855efff74e42d481"
+						"629f671d42be8330d26dd241"
 					]
 				}
 			},
@@ -229,6 +229,16 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2MTVlN2ViZWVkNDhlOTQ1N2EzNyIsImlhdCI6MTY1NDQxNjM4NSwiZXhwIjoxNjU1MDIxMTg1fQ.zIJf-u1C6jg3nO4Lb-pkrScmlm1GYy5kXrQ-IrRoNQM",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
