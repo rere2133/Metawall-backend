@@ -1,16 +1,17 @@
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 const cors = require("cors");
 
-var usersRouter = require("./routes/users");
-var postsRouter = require("./routes/posts");
+const usersRouter = require("./routes/users");
+const postsRouter = require("./routes/posts");
+const uploadRouter = require("./routes/upload");
 
-var app = express();
+const app = express();
 
 require("./connections");
-const res = require("express/lib/response");
+// const res = require("express/lib/response");
 
 process.on("uncaughtException", (err) => {
   console.log("Uncaught Exception");
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/users", usersRouter);
 app.use(postsRouter);
+app.use("/upload", uploadRouter);
 
 app.use((req, res, next) => {
   res.status(404).json({
