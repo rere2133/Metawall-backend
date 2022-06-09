@@ -23,6 +23,11 @@ router.post(
   isAuth,
   handleErrorAsync(PostControllers.addLike)
 );
+router.delete(
+  "/post/:id/likes",
+  isAuth,
+  handleErrorAsync(PostControllers.deleteLike)
+);
 
 router.options("/posts", isAuth, handleErrorAsync(PostControllers.cors));
 

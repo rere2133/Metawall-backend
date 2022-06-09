@@ -75,6 +75,21 @@ const postControllers = {
     if (post == null) {
       return appError(400, "無此貼文", next);
     }
+    res.status(201).json({
+      status: "success",
+      post_id: _id,
+      user_id: req.user.id,
+    });
+  },
+  async deleteLike(req, res, next) {
+    const _id = req.params.id;
+    const post = await Post.findByIdAndUpdate(
+      { _id },
+      { $pull: { likes: req.user.id } }
+    );
+    if (post == null) {
+      return appError(400, "無此貼文", next);
+    }
     res.status(200).json({
       status: "success",
       post_id: _id,
