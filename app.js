@@ -6,6 +6,7 @@ const cors = require("cors");
 
 var usersRouter = require("./routes/users");
 var postsRouter = require("./routes/posts");
+var uploadRouter = require("./routes/upload");
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/users", usersRouter);
 app.use(postsRouter);
+app.use("/upload", uploadRouter);
 
 app.use((req, res, next) => {
   res.status(404).json({
