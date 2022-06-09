@@ -66,6 +66,21 @@ const postControllers = {
       appError(400, "尚未填寫貼文內容", next);
     }
   },
+  async addLike(req, res, next) {
+    const _id = req.params.id;
+    const post = await Post.findByIdAndUpdate(
+      { _id },
+      { $addToSet: { likes: req.user.id } }
+    );
+    if (post == null) {
+      return appError(400, "無此貼文", next);
+    }
+    res.status(200).json({
+      status: "success",
+      post_id: _id,
+      user_id: req.user.id,
+    });
+  },
   cors(req, res, next) {
     handleSuccess(res, "options");
   },
