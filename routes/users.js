@@ -14,5 +14,10 @@ router.post(
   isAuth,
   handleErrorAsync(userControllers.editPassword)
 );
+router.get(
+  "/getLikeList",
+  isAuth,
+  handleErrorAsync(userControllers.getLikeList)
+);
 
 module.exports = router;

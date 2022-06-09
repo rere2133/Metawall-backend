@@ -96,6 +96,15 @@ const postControllers = {
       user_id: req.user.id,
     });
   },
+  async getUserPosts(req, res, next) {
+    const user = req.user.id;
+    const postsList = await Post.find({ user });
+    res.status(200).json({
+      status: "success",
+      results: postsList.length,
+      postsList,
+    });
+  },
   cors(req, res, next) {
     handleSuccess(res, "options");
   },

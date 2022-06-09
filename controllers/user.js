@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const { generateJWT } = require("../services/auth");
+const Post = require("../models/postModel");
 
 const userControllers = {
   async signUp(req, res, next) {
@@ -94,6 +95,18 @@ const userControllers = {
     });
 
     generateJWT(user, 200, res);
+  },
+  async getLikeList(req, res, next) {
+    const likeList = await Post.find({
+      likes: { $in: [req.user.id] },
+    }).populate({
+      path: "user",
+      select: "name _id",
+    });
+    res.status(200).json({
+      status: "success",
+      likeList,
+    });
   },
 };
 
