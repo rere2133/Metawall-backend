@@ -19,10 +19,9 @@ const postControllers = {
   },
   async createPosts(req, res, next) {
     const data = req.body;
-    // console.log({ data });
-    if (data.user && data.content) {
+    if (data.content) {
       await Post.create({
-        user: data.user,
+        user: req.user.id,
         content: data.content,
         image: data.image || "",
         tags: data.tags || [],
@@ -50,9 +49,9 @@ const postControllers = {
     // console.log({ id });
     const data = req.body;
     // console.log({ data });
-    if (data.user && data.content) {
+    if (data.content) {
       let editedPost = await Post.findByIdAndUpdate(id, {
-        user: data.user,
+        user: req.user.id,
         content: data.content,
         image: data.image || "",
         tags: data.tags || [],
@@ -65,6 +64,21 @@ const postControllers = {
     } else {
       appError(400, "尚未填寫貼文內容", next);
     }
+  },
+  async addLike(req, res, next) {
+    const postId = req.params.id;
+    const userId = req.user.id;
+    const post = await Post.findByIdAndUpdate(postId, {
+      $addToSet: { likes: req.user.id },
+    });
+    if (post == null) {
+      return appError(400, "無此貼文", next);
+    }
+    res.status(200).json({
+      status: "success",
+      postId,
+      userId,
+    });
   },
   cors(req, res, next) {
     handleSuccess(res, "options");

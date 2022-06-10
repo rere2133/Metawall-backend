@@ -21,10 +21,12 @@ const postSchema = new mongoose.Schema(
         default: "",
       },
     ],
-    likes: {
-      type: Number,
-      default: 0,
-    },
+    likes: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "user",
+      },
+    ],
     createAt: {
       type: Date,
       default: Date.now,

@@ -18,6 +18,11 @@ router.delete(
   handleErrorAsync(PostControllers.deletePost)
 );
 router.patch("/post/:id", isAuth, handleErrorAsync(PostControllers.editPost));
+router.post(
+  "/post/:id/likes",
+  isAuth,
+  handleErrorAsync(PostControllers.addLike)
+);
 router.options("/posts", isAuth, handleErrorAsync(PostControllers.cors));
 
 module.exports = router;
