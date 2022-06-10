@@ -80,6 +80,30 @@ const postControllers = {
       userId,
     });
   },
+  async deleteLike(req, res, next) {
+    const postId = req.params.id;
+    const userId = req.user.id;
+    const post = await Post.findByIdAndUpdate(postId, {
+      $pull: { likes: req.user.id },
+    });
+    if (post == null) {
+      return appError(400, "無此貼文", next);
+    }
+    res.status(200).json({
+      status: "success",
+      postId,
+      userId,
+    });
+  },
+  async getUserPosts(req, res, next) {
+    const user = req.params.id;
+    const postList = await Post.find({ user });
+    res.status(200).json({
+      status: "success",
+      results: postList.length,
+      postList,
+    });
+  },
   cors(req, res, next) {
     handleSuccess(res, "options");
   },
