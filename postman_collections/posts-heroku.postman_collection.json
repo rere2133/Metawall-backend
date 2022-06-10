@@ -121,21 +121,11 @@
 		{
 			"name": "編輯post",
 			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTliYjI1MGQ3NjZiYTM4OGUxYjdiZiIsImlhdCI6MTY1NDMzNTAxOCwiZXhwIjoxNjU0OTM5ODE4fQ.CN01knsgRoFAlraZyFRZQ7FUxqDjrXOwKcV7yfOq7yk",
-							"type": "string"
-						}
-					]
-				},
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"user\": \"629c6a0d855efff74e42d4ae\",\n  \"content\": \"不喜歡美式，只愛冰拿鐵，一天精神來源\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\", \"ya\"]\n}",
+					"raw": "{\n  \"content\": \"不喜歡美式，只愛冰拿鐵，一天精神來源\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\", \"ya\"]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,13 +133,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseURL}}/post/629f671d42be8330d26dd241",
+					"raw": "{{baseURL}}/post/62a2acbba4f6608695a3771e",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"post",
-						"629f671d42be8330d26dd241"
+						"62a2acbba4f6608695a3771e"
 					]
 				}
 			},
@@ -234,7 +224,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2MTVlN2ViZWVkNDhlOTQ1N2EzNyIsImlhdCI6MTY1NDQxNjM4NSwiZXhwIjoxNjU1MDIxMTg1fQ.zIJf-u1C6jg3nO4Lb-pkrScmlm1GYy5kXrQ-IrRoNQM",
+				"value": "{{jwt}}",
 				"type": "string"
 			}
 		]
@@ -263,6 +253,11 @@
 		{
 			"key": "baseURL",
 			"value": "https://radiant-brook-26001.herokuapp.com"
+		},
+		{
+			"key": "jwt",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTJhZGFmYTRmNjYwODY5NWEzNzczZCIsImlhdCI6MTY1NDgyODQ2MywiZXhwIjoxNjU1NDMzMjYzfQ.0HDwuKhI7bdUgXOJ5_hHaExEtS2iCNtsxjuMjhZjmso",
+			"type": "string"
 		}
 	]
 }

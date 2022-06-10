@@ -70,7 +70,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODgxNywiZXhwIjoxNjU1MDIzNjE3fQ.flrdy5S3LMDVrBKqWwDpVeihHs06LbzjcluTKId17Ow",
+						"value": "Bearer {{jwt}}",
 						"type": "text"
 					}
 				],
@@ -103,7 +103,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODEzOSwiZXhwIjoxNjU1MDIyOTM5fQ.16uY8QGQgdNRRjW6hWLWfIxY35qAQ8_mxI1HZM04qHM",
+						"value": "Bearer {{jwt}}",
 						"type": "text"
 					}
 				],
@@ -136,7 +136,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODgxNywiZXhwIjoxNjU1MDIzNjE3fQ.flrdy5S3LMDVrBKqWwDpVeihHs06LbzjcluTKId17Ow",
+						"value": "Bearer {{jwt}}",
 						"type": "text"
 					}
 				],
@@ -187,6 +187,11 @@
 		{
 			"key": "baseURL",
 			"value": "https://radiant-brook-26001.herokuapp.com",
+			"type": "string"
+		},
+		{
+			"key": "jwt",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTJhZGFmYTRmNjYwODY5NWEzNzczZCIsImlhdCI6MTY1NDgyODQ2MywiZXhwIjoxNjU1NDMzMjYzfQ.0HDwuKhI7bdUgXOJ5_hHaExEtS2iCNtsxjuMjhZjmso",
 			"type": "string"
 		}
 	]

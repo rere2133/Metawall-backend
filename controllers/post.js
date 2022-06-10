@@ -20,9 +20,9 @@ const postControllers = {
   async createPosts(req, res, next) {
     const data = req.body;
     // console.log({ data });
-    if (data.user && data.content) {
+    if (data.content) {
       await Post.create({
-        user: data.user,
+        user: req.user.id,
         content: data.content,
         image: data.image || "",
         tags: data.tags || [],
@@ -50,9 +50,9 @@ const postControllers = {
     // console.log({ id });
     const data = req.body;
     // console.log({ data });
-    if (data.user && data.content) {
+    if (data.content) {
       let editedPost = await Post.findByIdAndUpdate(id, {
-        user: data.user,
+        user: req.user.id,
         content: data.content,
         image: data.image || "",
         tags: data.tags || [],
