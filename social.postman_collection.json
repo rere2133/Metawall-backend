@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "e5b7a8db-6bd1-4659-8648-98627513e0e7",
+		"name": "social",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12394128"
+	},
+	"item": [
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "取得posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/posts",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得posts with sort",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/posts?timeSort=asc&search=果汁",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "timeSort",
+									"value": "asc"
+								},
+								{
+									"key": "search",
+									"value": "果汁"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\": \"不喜歡美式，只愛果汁D\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/posts",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "編輯post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\": \"不喜歡美式，只愛冰拿鐵，一天精神來源\",\n  \"image\" : \"https://hello.com\",\n  \"tags\": [\"coffee\",\"咖啡\", \"ya\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/post/62a370d4db2dc432bf7336e1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"post",
+								"62a370d4db2dc432bf7336e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/post/62a370d4db2dc432bf7336e1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"post",
+								"62a370d4db2dc432bf7336e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除posts",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/posts",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增貼文讚",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/post/62a370ecdb2dc432bf7336ee/likes",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"post",
+								"62a370ecdb2dc432bf7336ee",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消貼文讚",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/post/62a370ecdb2dc432bf7336ee/likes",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"post",
+								"62a370ecdb2dc432bf7336ee",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人貼文列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/posts/user/62a371a5db2dc432bf733709",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"posts",
+								"user",
+								"62a371a5db2dc432bf733709"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{jwt}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "註冊",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"oooyya\",\n    \"email\": \"a12@gmail.com\",\n    \"password\": \"yuiohjkl\",\n    \"confirmPassword\":\"yuiohjkl\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/sign_up",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登入",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"a11@gmail.com\",\n    \"password\": \"yuiohjkl\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/sign_in",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "使用者資訊頁",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODgxNywiZXhwIjoxNjU1MDIzNjE3fQ.flrdy5S3LMDVrBKqWwDpVeihHs06LbzjcluTKId17Ow",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/profile",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新密碼",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODEzOSwiZXhwIjoxNjU1MDIyOTM5fQ.16uY8QGQgdNRRjW6hWLWfIxY35qAQ8_mxI1HZM04qHM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"yuiohjkr\",\n    \"confirmPassword\": \"yuiohjkr\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/updatePassword",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新使用者資訊",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODgxNywiZXhwIjoxNjU1MDIzNjE3fQ.flrdy5S3LMDVrBKqWwDpVeihHs06LbzjcluTKId17Ow",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"danny\",\n    \"sex\": \"male\",\n    \"photo\": \"picture.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/profile",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得按讚列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM2YTBkODU1ZWZmZjc0ZTQyZDRhZSIsImlhdCI6MTY1NDQxODgxNywiZXhwIjoxNjU1MDIzNjE3fQ.flrdy5S3LMDVrBKqWwDpVeihHs06LbzjcluTKId17Ow",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/getLikeList",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"getLikeList"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upload",
+			"item": [
+				{
+					"name": "圖片上傳",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": "/Users/ASUS/Downloads/node_avatar.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/upload",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://powerful-fjord-75184.herokuapp.com",
+			"type": "string"
+		},
+		{
+			"key": "jwt",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTM3MWE1ZGIyZGM0MzJiZjczMzcwOSIsImlhdCI6MTY1NDg3ODYyOSwiZXhwIjoxNjU1NDgzNDI5fQ.TnlopcxbqjWeJd6URtdyy4L_Zesh3wXgYV3BAaJ049g",
+			"type": "string"
+		}
+	]
+}
