@@ -2,6 +2,8 @@ const handleSuccess = require("../services/handleSuccess");
 const appError = require("../services/appError");
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
+const Comment = require("../models/commentModel");
+const { log } = require("debug/src/browser");
 const postControllers = {
   async getPosts(req, res) {
     const timeSort = req.query.timeSort == "asc" ? "createAt" : "-createAt";
@@ -13,6 +15,10 @@ const postControllers = {
       .populate({
         path: "user",
         select: "name photo",
+      })
+      .populate({
+        path: "comments",
+        select: "user comment",
       })
       .sort(timeSort);
     await handleSuccess(res, null, posts);
@@ -59,10 +65,10 @@ const postControllers = {
       if (editedPost !== null) {
         await handleSuccess(res, "成功更新一筆");
       } else {
-        appError(400, "無此貼文ID", next);
+        return appError(400, "無此貼文ID", next);
       }
     } else {
-      appError(400, "尚未填寫貼文內容", next);
+      return appError(400, "尚未填寫貼文內容", next);
     }
   },
   async addLike(req, res, next) {
@@ -95,15 +101,41 @@ const postControllers = {
       userId,
     });
   },
+
+  async createComment(req, res, next) {
+    const user = req.user.id;
+    const post = req.params.id;
+    const { comment } = req.body;
+    const postContent = await Post.findById(post);
+    console.log({ postContent });
+    if (postContent == null) return appError(400, "無此貼文ID", next);
+    if (comment) {
+      const newComment = await Comment.create({
+        user,
+        post,
+        comment,
+      });
+      res.status(200).json({
+        status: "success",
+        newComment,
+      });
+    } else {
+      appError(400, "尚未填寫任何留言內容", next);
+    }
+  },
   async getUserPosts(req, res, next) {
     const user = req.params.id;
-    const postList = await Post.find({ user });
+    const postList = await Post.find({ user }).populate({
+      path: "comments",
+      select: "comment user",
+    });
     res.status(200).json({
       status: "success",
       results: postList.length,
       postList,
     });
   },
+
   cors(req, res, next) {
     handleSuccess(res, "options");
   },

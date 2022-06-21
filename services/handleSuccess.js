@@ -7,10 +7,15 @@ const handleSuccess = async (res, msg, posts) => {
     if (posts) {
       newPosts = posts;
     } else {
-      newPosts = await Post.find().populate({
-        path: "user",
-        select: "name photo",
-      });
+      newPosts = await Post.find()
+        .populate({
+          path: "user",
+          select: "name photo",
+        })
+        .populate({
+          path: "comments",
+          select: "user comment",
+        });
     }
     res.status(200).json({
       status: true,
