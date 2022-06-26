@@ -19,5 +19,15 @@ router.get(
   isAuth,
   handleErrorAsync(userControllers.getLikeList)
 );
+router.post(
+  "/:id/follow",
+  isAuth,
+  handleErrorAsync(userControllers.followFriend)
+);
+router.delete(
+  "/:id/unfollow",
+  isAuth,
+  handleErrorAsync(userControllers.unfollowFriend)
+);
 
 module.exports = router;

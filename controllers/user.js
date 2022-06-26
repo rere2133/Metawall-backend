@@ -108,6 +108,89 @@ const userControllers = {
       postList,
     });
   },
+  async followFriend(req, res, next) {
+    const userId = req.user.id;
+    const followId = req.params.id;
+    if (userId == followId) {
+      return appError(400, "您無法追蹤自己", next);
+    }
+    const isFollowed = await User.findOne({
+      _id: userId,
+      "following.user": { $eq: followId },
+    });
+    if (isFollowed) {
+      return appError(400, "您已經追蹤此好友", next);
+    }
+    await User.updateOne(
+      {
+        _id: userId,
+        "following.user": { $ne: followId },
+      },
+      {
+        $addToSet: {
+          following: {
+            user: followId,
+          },
+        },
+      }
+    );
+    await User.updateOne(
+      {
+        _id: followId,
+        "followers.user": { $ne: userId },
+      },
+      {
+        $addToSet: {
+          followers: {
+            user: userId,
+          },
+        },
+      }
+    );
+    res.status(200).json({
+      status: "success",
+      msg: "您已追蹤成功",
+    });
+  },
+  async unfollowFriend(req, res, next) {
+    const userId = req.user.id;
+    const followId = req.params.id;
+    const notFollowed = await User.findOne({
+      _id: userId,
+      "following.user": { $ne: followId },
+    });
+    if (notFollowed) {
+      return appError(400, "您尚未追蹤此好友", next);
+    }
+    await User.updateOne(
+      {
+        _id: userId,
+      },
+      {
+        $pull: {
+          following: {
+            user: followId,
+          },
+        },
+      }
+    );
+    await User.updateOne(
+      {
+        _id: followId,
+      },
+      {
+        $pull: {
+          followers: {
+            user: userId,
+          },
+        },
+      }
+    );
+    res.status(200).json({
+      status: "success",
+      msg: "你已經取消追蹤此好友",
+    });
+  },
 };
 
 module.exports = userControllers;
