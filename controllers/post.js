@@ -2,6 +2,7 @@ const handleSuccess = require("../services/handleSuccess");
 const appError = require("../services/appError");
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
+const Comment = require("../models/commentModel");
 const postControllers = {
   async getPosts(req, res) {
     const timeSort = req.query.timeSort == "asc" ? "createAt" : "-createAt";
@@ -13,6 +14,10 @@ const postControllers = {
       .populate({
         path: "user",
         select: "name photo",
+      })
+      .populate({
+        path: "comments",
+        select: "comment user",
       })
       .sort(timeSort);
     await handleSuccess(res, null, posts);
@@ -95,9 +100,26 @@ const postControllers = {
       userId,
     });
   },
+  async createComment(req, res, next) {
+    const post = req.params.id;
+    const user = req.user.id;
+    const { comment } = req.body;
+    const newComment = await Comment.create({
+      post,
+      user,
+      comment,
+    });
+    res.status(200).json({
+      status: "success",
+      res: newComment,
+    });
+  },
   async getUserPosts(req, res, next) {
     const user = req.params.id;
-    const postList = await Post.find({ user });
+    const postList = await Post.find({ user }).populate({
+      path: "comments",
+      select: "comment user",
+    });
     res.status(200).json({
       status: "success",
       results: postList.length,

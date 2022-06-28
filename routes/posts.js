@@ -30,6 +30,12 @@ router.delete(
   isAuth,
   handleErrorAsync(PostControllers.deleteLike)
 );
+router.post(
+  "/post/:id/comment",
+  isAuth,
+  handleErrorAsync(PostControllers.createComment)
+);
+
 // user
 router.get("/posts/user/:id", handleErrorAsync(PostControllers.getUserPosts));
 //options
