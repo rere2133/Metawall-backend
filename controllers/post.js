@@ -22,6 +22,24 @@ const postControllers = {
       .sort(timeSort);
     await handleSuccess(res, null, posts);
   },
+  async getPost(req, res, next) {
+    const id = req.params.id;
+    const post = await Post.find({ _id: id })
+      .populate({
+        path: "user",
+        select: "name photo",
+      })
+      .populate({
+        path: "comments",
+        select: "comment user",
+      });
+    console.log({ post });
+    if (post.length != 0) {
+      await handleSuccess(res, null, post);
+    } else {
+      appError(400, "無此貼文ID", next);
+    }
+  },
   async createPosts(req, res, next) {
     const data = req.body;
     if (data.content) {
