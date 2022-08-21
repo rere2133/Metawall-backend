@@ -101,7 +101,7 @@ const userControllers = {
       likes: { $in: [req.user.id] },
     }).populate({
       path: "user",
-      select: "name _id",
+      select: "name _id photo",
     });
     res.status(200).json({
       status: "success",
