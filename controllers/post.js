@@ -143,9 +143,10 @@ const postControllers = {
         path: "comments",
         select: "comment user",
       });
+    const userData = await User.findOne({ _id: user });
     res.status(200).json({
       status: "success",
-      results: postList.length,
+      userData,
       postList,
     });
   },
