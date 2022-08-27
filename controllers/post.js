@@ -135,6 +135,10 @@ const postControllers = {
   async getUserPosts(req, res, next) {
     const user = req.params.id;
     const postList = await Post.find({ user }).populate({
+      path: "user",
+      select: "name photo",
+    });
+    populate({
       path: "comments",
       select: "comment user",
     });
